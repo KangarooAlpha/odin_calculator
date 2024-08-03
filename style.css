@@ -1,0 +1,35 @@
+body {
+    padding: 100px;
+    background-color: gray;
+    align-items: center;
+    align-content: center;
+}
+#container {
+    width: 50%;
+    margin: auto;
+    background-color: white;
+}
+#calculator {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    background-color: beige;
+}
+
+.buttons {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+#display {
+    display: flex;
+    margin-left: 50%;
+    align-content: center;
+    color: seagreen;
+}
