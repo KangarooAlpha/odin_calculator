@@ -53,11 +53,11 @@ operations.forEach((opr) => {
             if (currentNum == "") {
                 currentNum = previousNum
             }
-            previousNum = operate(previousNum, currentNum, operation)
-            console.log(previousNum)
+            currentNum = operate(previousNum, currentNum, operation)
         }
         operation = "" + `${opr.textContent}`
         previousNum = currentNum;
+        console.log(previousNum)
         display.textContent = previousNum;
         currentNum = "";
     })
