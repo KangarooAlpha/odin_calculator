@@ -1,12 +1,13 @@
 const numbers = document.querySelectorAll(".numbers")
 let display = document.querySelector("#display")
+const operations = document.querySelectorAll(".operation")
 
-let firstNum = "";
-let secondNum = "";
+let previousNum = "";
+let currentNum = "";
 let operation = "";
 
 function add(a,b){
-    return a + b;
+    return (+a+b*1);
 }
 
 function subtract(a,b){
@@ -34,11 +35,30 @@ function operate(firstNum,secondNum,operation){
     else if (operation == "/") {
         return (divide(firstNum,secondNum))
     }
+    else {
+        return 1
+    }
 }
 
 numbers.forEach( (num) => {
     num.addEventListener("click", ()=> {
-        firstNum += "" + num.textContent
-        display.textContent = firstNum
+        currentNum += num.textContent
+        display.textContent = currentNum
+    })
+});
+
+operations.forEach((opr) => {
+    opr.addEventListener("click", ()=> {
+        if (previousNum != ""){
+            if (currentNum == "") {
+                currentNum = previousNum
+            }
+            previousNum = operate(previousNum, currentNum, operation)
+            console.log(previousNum)
+        }
+        operation = "" + `${opr.textContent}`
+        previousNum = currentNum;
+        display.textContent = previousNum;
+        currentNum = "";
     })
 });
