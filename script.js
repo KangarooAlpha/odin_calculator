@@ -4,6 +4,7 @@ const operations = document.querySelectorAll(".operation")
 const clear = document.querySelector("#clear")
 const signChange = document.querySelector("#sign-change")
 const equal = document.querySelector("#equal")
+const decimal = document.querySelector("#decimal")
 
 let previousNum = "";
 let currentNum = "";
@@ -94,4 +95,11 @@ equal.addEventListener("click", ()=> {
     currentNum = ""
     previousNum = ""
     operation = ""
+})
+
+decimal.addEventListener("click", ()=> {
+    if (!currentNum.includes(".")) {
+        currentNum += decimal.textContent
+    }
+    console.log(currentNum)
 })
