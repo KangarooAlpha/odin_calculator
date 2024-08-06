@@ -1,6 +1,9 @@
 const numbers = document.querySelectorAll(".numbers")
 let display = document.querySelector("#display")
 const operations = document.querySelectorAll(".operation")
+const clear = document.querySelector("#clear")
+const signChange = document.querySelector("#sign-change")
+const equal = document.querySelector("#equal")
 
 let previousNum = "";
 let currentNum = "";
@@ -57,8 +60,38 @@ operations.forEach((opr) => {
         }
         operation = "" + `${opr.textContent}`
         previousNum = currentNum;
-        console.log(previousNum)
         display.textContent = previousNum;
         currentNum = "";
     })
 });
+
+clear.addEventListener("click", ()=> {
+    operation = ""
+    previousNum = ""
+    currentNum = ""
+    display.textContent = '000000'
+})
+
+signChange.addEventListener("click", ()=> {
+    currentNum = currentNum * (-1) 
+    display.textContent = currentNum
+})
+
+equal.addEventListener("click", ()=> {
+    if (currentNum == "" && previousNum != "") {
+        display.textContent = previousNum
+    }
+    else if (currentNum != "" && previousNum == "") {
+        display.textContent = currentNum
+    }
+    else if (currentNum == "" && previousNum == "") {
+        display.textContent = "0000000"
+    }
+    else {
+        currentNum = operate(previousNum, currentNum, operation)
+        display.textContent = currentNum
+    }
+    currentNum = ""
+    previousNum = ""
+    operation = ""
+})
