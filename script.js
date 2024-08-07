@@ -100,6 +100,6 @@ equal.addEventListener("click", ()=> {
 decimal.addEventListener("click", ()=> {
     if (!currentNum.includes(".")) {
         currentNum += decimal.textContent
+        display.textContent = currentNum
     }
-    console.log(currentNum)
 })
